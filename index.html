@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>졸업앨범진행달력</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📅 졸업앨범진행달력</h1>
+            <div class="date-navigation">
+                <button id="prevMonth" class="nav-btn">‹</button>
+                <h2 id="currentMonthYear"></h2>
+                <button id="nextMonth" class="nav-btn">›</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- 달력 영역 -->
+            <div class="calendar-section">
+                <div class="calendar">
+                    <div class="calendar-weekdays">
+                        <div class="weekday">일</div>
+                        <div class="weekday">월</div>
+                        <div class="weekday">화</div>
+                        <div class="weekday">수</div>
+                        <div class="weekday">목</div>
+                        <div class="weekday">금</div>
+                        <div class="weekday">토</div>
+                    </div>
+                    <div id="calendarDays" class="calendar-days"></div>
+                </div>
+            </div>
+
+            <!-- 할 일 관리 영역 -->
+            <div class="todo-section" id="todoSection" style="display: none;">
+                <div class="todo-header">
+                    <h2 id="selectedDate"></h2>
+                    <button id="closeTodoSection" class="close-btn">×</button>
+                </div>
+
+                <!-- 할 일 추가 폼 -->
+                <div class="todo-form">
+                    <input type="text" id="todoInput" placeholder="새로운 할 일을 입력하세요..." />
+                    <button id="addTodoBtn">추가</button>
+                </div>
+
+                <!-- 할 일 탭 -->
+                <div class="todo-tabs">
+                    <button class="tab-btn active" data-tab="todo">할 일 목록 (<span id="todoCount">0</span>)</button>
+                    <button class="tab-btn" data-tab="progress">할일 진행 (<span id="progressCount">0</span>)</button>
+                    <button class="tab-btn" data-tab="completed">할일 완료 (<span id="completedCount">0</span>)</button>
+                </div>
+
+                <!-- 할 일 목록 -->
+                <div class="todo-lists">
+                    <div class="todo-list" id="todoList" data-status="todo">
+                        <div class="list-header">할 일 목록 (드래그하여 진행으로 이동)</div>
+                        <div class="todo-items" id="todoItems"></div>
+                    </div>
+                    <div class="todo-list" id="progressList" data-status="progress">
+                        <div class="list-header">진행 중인 할 일 (드래그하여 완료로 이동)</div>
+                        <div class="todo-items" id="progressItems"></div>
+                    </div>
+                    <div class="todo-list" id="completedList" data-status="completed">
+                        <div class="list-header">완료된 할 일</div>
+                        <div class="todo-items" id="completedItems"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 할 일 수정 모달 -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>할 일 수정</h3>
+            <input type="text" id="editTodoInput" />
+            <div class="modal-buttons">
+                <button id="saveEditBtn">저장</button>
+                <button id="cancelEditBtn">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
